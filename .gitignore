@@ -14,3 +14,6 @@ env/
 # Ignore distribution directories for Linux and Windows
 dist_linux/
 dist_windows/
+
+# Ignore Processed Files
+processed_hashes.txt
