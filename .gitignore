@@ -1,7 +1,16 @@
-/__pycache__
-/album_art
-/background_images
-/build
-/env
-/dist_linux
-/dist_windows
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore directories containing image files
+album_art/
+background_images/
+
+# Ignore build directories
+build/
+
+# Ignore virtual environment directory
+env/
+
+# Ignore distribution directories for Linux and Windows
+dist_linux/
+dist_windows/
