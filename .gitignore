@@ -2,4 +2,6 @@
 /album_art
 /background_images
 /build
-.env
+/env
+/dist_linux
+/dist_windows
