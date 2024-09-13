@@ -1,3 +1,6 @@
+# ignore github
+.github/
+
 # Ignore Python bytecode files
 __pycache__/
 
