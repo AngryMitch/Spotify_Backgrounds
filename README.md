@@ -22,6 +22,7 @@ If run regularly, this can be set up to be dynamic!
    git clone https://github.com/AngryMitch/Spotify_Backgrounds.git
    cd Spotify_Backgrounds
    ```
+   (Or download the zip and unpack)
 
 2. **Install Dependencies**
 
