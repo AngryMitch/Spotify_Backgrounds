@@ -2,13 +2,6 @@ import os
 from PIL import Image
 import math
 
-# Debugging
-import time
-
-# Define the directories for images and output
-input_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'album_art')
-output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'background_images')
-
 def create_image_grid(images, grid_size, image_size):
     """Create a grid of images."""
     grid_width, grid_height = grid_size
@@ -30,10 +23,11 @@ def resize_images(output_dir, file_size):
                 resized_image = img.resize((file_size, file_size), Image.LANCZOS)
                 resized_image.save(img_path)
 
-def generate_grid(grid_width=5, grid_height=None, image_size=200, output_filename='album_art_grid.jpg', background_dir='background_images'):
+def generate_grid(grid_width=5, grid_height=None, image_size=200, output_filename='album_art_grid.jpg', input_dir='album_art', output_dir='background_images'):
     """Generate a grid of images and save it with specified dimensions and filename."""
-    # Ensure the output directory exists
-    os.makedirs(background_dir, exist_ok=True)
+    # Ensure the directories exists
+    os.makedirs(input_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
 
     # If only one input, make Square
     if grid_height == None and grid_width != None:
@@ -59,6 +53,7 @@ def generate_grid(grid_width=5, grid_height=None, image_size=200, output_filenam
         print("No images found in the directory.")
         return
 
+    # Ensure Uniform Size
     images = []
     for image_file in image_files:
         image_path = os.path.join(input_dir, image_file)
@@ -111,10 +106,10 @@ def generate_grid(grid_width=5, grid_height=None, image_size=200, output_filenam
 
     # Create and save the grid image
     grid_image = create_image_grid(images, (grid_width, grid_height), image_size)
-    output_image_path = os.path.join(background_dir, output_filename)
+    output_image_path = os.path.join(output_dir, output_filename)
     grid_image.save(output_image_path)
     print(f"Grid image saved to {output_image_path}")
 
 if __name__ == "__main__":
     # Example usage with default values
-    generate_grid(grid_width=5, grid_height=5, output_filename="album_art_grid.jpg", image_size=400, background_dir='background_images')
+    generate_grid(grid_width=5, grid_height=5, output_filename="album_art_grid.jpg", image_size=400, input_dir='album_art', output_dir='background_images')

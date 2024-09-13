@@ -8,20 +8,27 @@ from parse_for_images import search_and_process_images
 from create_background import generate_grid, resize_images
 from manage_files import edit_files
 
-GRID_WIDTH = None               # Is /image, Set to 200 for maximum grid size. Only 1 value needed (makes square) set to None
-GRID_HEIGHT = 6                 # Is /image, Set to 200 for maximum grid size. Only 1 value needed (makes square) set to None
-IMAGE_SIZE = 1000               # Sets image pixel size
+### =============================================
+### === Variables ===============================
+### =============================================
+GRID_WIDTH = None                                           # Is /image, Set to 200 for maximum grid size. Only 1 value needed (makes square) set to None
+GRID_HEIGHT = 3                                             # Is /image, Set to 200 for maximum grid size. Only 1 value needed (makes square) set to None
+IMAGE_SIZE = 1000                                           # Sets image pixel size
 
 # Define the file name and type
-USE_UNIQUE_NAME = False          # Option to enable unique background naming is True or False
-BASE_NAME = "album_art_grid"    # Define the base name and extension
-FILE_ETX = ".jpg"               # Define the extension (note: needs to start with '.' and be a supported image extenstion (e.g. .png, .jpg, etc.))
+USE_UNIQUE_NAME = False                                     # Option to enable unique background naming is True or False
+BASE_NAME = "album_art_grid"                                # Define the base name and extension
+FILE_ETX = ".jpg"                                           # Define the extension (note: needs to start with '.' and be a supported image extenstion (e.g. .png, .jpg, etc.))
 
 # Define the directories to search and the output directory
 SAVE_DIR = os.path.join(os.curdir, 'album_art')             # Output directory for album art
 OUTPUT_DIR = os.path.join(os.curdir, 'background_images')   # Output directory for background images
 MAX_SIZE_MB = 50 # MB                                       # Maximum folder sizes in MB
 
+
+### =============================================
+### === Functions ===============================
+### =============================================
 # Determine if the directories exist, if not create them
 def ensure_directory_exists(directory):
     """Check if a directory exists and create it if it does not."""
@@ -107,7 +114,9 @@ def return_name():
 
     return BACKGROUND_NAME
 
-
+### =============================================
+### === Programs ================================
+### =============================================
 # Ensure the directories exist
 ensure_directory_exists(SAVE_DIR)
 ensure_directory_exists(OUTPUT_DIR)
@@ -116,7 +125,7 @@ ensure_directory_exists(OUTPUT_DIR)
 search_and_process_images(CACHE_DIR, SAVE_DIR)
 
 # Generate Grid Background with saved images
-generate_grid(GRID_WIDTH, GRID_HEIGHT, IMAGE_SIZE, return_name(), OUTPUT_DIR)
+generate_grid(GRID_WIDTH, GRID_HEIGHT, IMAGE_SIZE, return_name(), SAVE_DIR, OUTPUT_DIR)
 
 # Manage files to make sure program doesnt bloat, deletes oldest after reaching file size
 edit_files(MAX_SIZE_MB)
