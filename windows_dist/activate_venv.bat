@@ -4,7 +4,7 @@ set VENV_DIR=..\venv
 
 REM Check if the venv directory exists
 if exist %VENV_DIR%\Scripts\activate.bat (
-    REM Navigate to the virtual environment's Scripts directory
+    REM Activate the virtual environment
     call %VENV_DIR%\Scripts\activate.bat
 ) else (
     echo Virtual environment not found. Creating it now...
@@ -15,7 +15,7 @@ if exist %VENV_DIR%\Scripts\activate.bat (
         exit /b 1
     )
     
-    REM Create the virtual environment
+    REM Create the virtual environment in the parent directory
     python -m venv %VENV_DIR%
     if errorlevel 1 (
         echo Failed to create virtual environment.

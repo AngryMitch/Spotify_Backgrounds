@@ -59,14 +59,27 @@ def get_cache_directories():
 
     # Check for Platform type and return relevant directories
     if os_type == 'Windows':
-        appdata_path = os.getenv('APPDATA')                     # AppData Directory for Windows systems
-        spotify_folder = re.compile(r'SpotifyAB\.SpotifyMusic_\w+')    # Define the regex pattern for matching the Spotify path
-        if not appdata_path:
-            raise EnvironmentError("APPDATA environment variable not set.")
-        return [
-            os.path.join(appdata_path, 'Local', 'Packages', spotify_folder, 'LocalCache', 'Spotify', 'Data'),
-            os.path.join(appdata_path, 'Local', 'Packages', spotify_folder, 'LocalState', 'Spotify', 'Storage')
-        ]
+        localappdata_path = os.getenv('LOCALAPPDATA')  # LocalAppData Directory for Windows systems
+        if not localappdata_path:
+            raise EnvironmentError("LOCALAPPDATA environment variable not set.")
+        
+        spotify_base_path = os.path.join(localappdata_path, 'Spotify')
+        
+        # Check if the Spotify directory exists
+        if not os.path.isdir(spotify_base_path):
+            raise FileNotFoundError(f"The path {spotify_base_path} does not exist.")
+        
+        # Construct paths for Data and Storage
+        data_path = os.path.join(spotify_base_path, 'Data')
+        storage_path = os.path.join(spotify_base_path, 'Storage')
+
+        # Verify that these directories exist
+        if not os.path.isdir(data_path):
+            raise FileNotFoundError(f"The path {data_path} does not exist.")
+        if not os.path.isdir(storage_path):
+            raise FileNotFoundError(f"The path {storage_path} does not exist.")
+
+        return [data_path, storage_path]
     elif os_type == 'Linux':
         HOME_DIR = os.path.expanduser("~")                  # Home Directory for Unix systems
         return [
