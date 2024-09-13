@@ -106,7 +106,7 @@ Feel free to submit issues, feature requests, or pull requests. Contributions ar
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/AngryMitch/Spotify_Backgrounds/main/.github/LICENSE) file for details.
 
 ## Contact
 
