@@ -93,7 +93,7 @@ If run regularly, this can be set up to be dynamic!
 
 4. **Set as Desktop Background**
 
-   After the script completes, you will find the generated background image in the `output` directory. Set it as your desktop wallpaper through your system settings.
+   After the script completes, you will find the generated background image in the `OUTPUT_DIR` directory within the project. Set it as your desktop wallpaper through your system settings.
 
 ## Troubleshooting
 
