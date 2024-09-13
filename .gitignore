@@ -1,7 +1,11 @@
-# ignore github
-.github/
+# Ignore specific workflow files
+.github/workflows/secret.yml
 
-# Ignore Python bytecode files
+# Ignore issue templates
+.github/ISSUE_TEMPLATE/
+
+# Ignore the Python bytecode files
+*.pyc
 __pycache__/
 
 # Ignore directories containing image files
@@ -12,13 +16,9 @@ background_images/
 build/
 
 # Ignore virtual environment directory
+venv/
 env/
 .venv/
-venv/
-
-# Ignore distribution directories for Linux and Windows
-dist_linux/
-dist_windows/
 
 # Ignore Processed Files
 processed_hashes.txt
