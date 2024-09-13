@@ -31,8 +31,49 @@ BASE_NAME = config.get('BASE_NAME')
 FILE_ETX = config.get('FILE_ETX')
 SAVE_DIR = os.path.join(os.curdir, config.get('SAVE_DIR'))
 OUTPUT_DIR = os.path.join(os.curdir, config.get('OUTPUT_DIR'))
+CACHE_DIR = config.get('CACHE_DIR')
+USE_DEFAULT_CACHE = config.get('USE_DEFAULT_CACHE')
 MAX_SIZE_MB = config.get('MAX_SIZE_MB')
 
+
+### =============================================
+### === Input Validation ========================
+### =============================================
+
+# List of variables to check
+variables = {
+    "GRID_WIDTH": GRID_WIDTH,
+    "GRID_HEIGHT": GRID_HEIGHT,
+    "IMAGE_SIZE": IMAGE_SIZE,
+    "USE_UNIQUE_NAME": USE_UNIQUE_NAME,
+    "BASE_NAME": BASE_NAME,
+    "FILE_ETX": FILE_ETX,
+    "SAVE_DIR": SAVE_DIR,
+    "OUTPUT_DIR": OUTPUT_DIR,
+    "CACHE_DIR": CACHE_DIR,
+    "USE_DEFAULT_CACHE": USE_DEFAULT_CACHE,
+    "MAX_SIZE_MB": MAX_SIZE_MB,
+}
+
+# Collect missing variables and their types
+missing_vars = []
+for var_name, var_value in variables.items(): # Checks for null values
+    if var_value is None:
+        missing_vars.append(f"{var_name} (type: {type(var_value).__name__})")
+
+# Check if FILE_ETX is one of the allowed extensions
+allowed_extensions = {'.png', '.jpg', '.jpeg'}
+if FILE_ETX not in allowed_extensions:
+    raise Exception(f"Invalid file extension '{FILE_ETX}'. Ensure it matches one of the following: {', '.join(allowed_extensions)}")
+
+# Confirm at least one grid dimension is set
+if GRID_WIDTH is None and GRID_HEIGHT is None:
+    raise Exception("Please set at least one dimension for the image grid. (Note: Setting one dimension will create a square grid)")
+
+# Check for Cache Directory
+if not USE_DEFAULT_CACHE:
+    if CACHE_DIR is None or len(CACHE_DIR) == 0:
+        raise Exception("Please use the default cache or set directory paths in CACHE_DIR as a list of strings.")
 
 ### =============================================
 ### === Functions ===============================
@@ -88,8 +129,9 @@ def get_cache_directories():
         ]
     else:
         raise OSError(f"Unsupported operating system: {os_type}")
-CACHE_DIR = get_cache_directories()
-
+# Check if using default cache directories
+if(USE_DEFAULT_CACHE == True): 
+    CACHE_DIR = get_cache_directories()
 
 # Function to generate a unique background name
 def generate_unique_background_name(base_name, extension):

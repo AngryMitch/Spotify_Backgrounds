@@ -1,11 +1,13 @@
 {
     "GRID_WIDTH": 3,
-    "GRID_HEIGHT": 7,
+    "GRID_HEIGHT": null,
     "IMAGE_SIZE": 1000,
     "USE_UNIQUE_NAME": false,
     "BASE_NAME": "album_art_grid",
     "FILE_ETX": ".jpg",
     "SAVE_DIR": "album_art",
     "OUTPUT_DIR": "background_images",
+    "CACHE_DIR": ["/home/user/.cache/spotify/Storage", "/home/mitch/.cache/spotify/Data"],
+    "USE_DEFAULT_CACHE": false,
     "MAX_SIZE_MB": 50
 }
