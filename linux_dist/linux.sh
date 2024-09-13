@@ -19,3 +19,5 @@ else
     echo "An error occurred while installing requirements."
     exit 1
 fi
+
+python3 scripts/__init__.py

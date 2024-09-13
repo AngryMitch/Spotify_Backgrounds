@@ -12,3 +12,8 @@ call windows_dist\activate_venv.bat
 
 REM Install the requirements
 pip install -r requirements.txt
+
+REM Run the Python script
+python scripts\__init__.py
+
+pause
