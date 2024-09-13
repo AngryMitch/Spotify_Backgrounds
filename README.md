@@ -64,9 +64,15 @@ If run regularly, this can be set up to be dynamic!
 
    Open the `config.json` file to adjust grid settings such as:
 
-   - `image_size`: Size of each album art image in the grid.
-   - `spacing`: Space between images.
-   - `output_resolution`: Resolution of the generated background.
+   - `GRID_WIDTH`: The set size of width of the grid (Note: leave null for square image using GRID_HEIGHT)
+   - `GRID_HEIGHT`: The set size of height of the grid (Note: leave null for square image using GRID_WIDTH)
+   - `IMAGE_SIZE`: Resolution of the generated background.
+   - `USE_UNIQUE_NAME`: True or False, this will generate an index for the file name allowing for slideshow backgrounds.
+   - `BASE_NAME`: What the name of the file you would like saved is.
+   - `FILE_ETX`: What file extension you want it saved as.
+   - `SAVE_DIR`: The name of where the album art is saved.
+   - `OUTPUT_DIR`: The name of Background Directory
+   - `MAX_SIZE_MB`: Limits the size of each generated directory to avoid bloat
 
    Example `config.json`:
 
