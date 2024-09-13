@@ -2,6 +2,7 @@
 import os
 import re
 import platform
+import json
 
 # Custom imports
 from parse_for_images import search_and_process_images
@@ -11,19 +12,26 @@ from manage_files import edit_files
 ### =============================================
 ### === Variables ===============================
 ### =============================================
-GRID_WIDTH = None                                           # Is /image, Set to 200 for maximum grid size. Only 1 value needed (makes square) set to None
-GRID_HEIGHT = 3                                             # Is /image, Set to 200 for maximum grid size. Only 1 value needed (makes square) set to None
-IMAGE_SIZE = 1000                                           # Sets image pixel size
+# Load configuration from JSON file
+def load_config(file_path):
+    """Load configuration from a JSON file."""
+    with open(file_path, 'r') as file:
+        config = json.load(file)
+    return config
 
-# Define the file name and type
-USE_UNIQUE_NAME = False                                     # Option to enable unique background naming is True or False
-BASE_NAME = "album_art_grid"                                # Define the base name and extension
-FILE_ETX = ".jpg"                                           # Define the extension (note: needs to start with '.' and be a supported image extenstion (e.g. .png, .jpg, etc.))
+# Load the configuration
+config = load_config('..\config.json')
 
-# Define the directories to search and the output directory
-SAVE_DIR = os.path.join(os.curdir, 'album_art')             # Output directory for album art
-OUTPUT_DIR = os.path.join(os.curdir, 'background_images')   # Output directory for background images
-MAX_SIZE_MB = 50 # MB                                       # Maximum folder sizes in MB
+# Constants from configuration
+GRID_WIDTH = config.get('GRID_WIDTH')
+GRID_HEIGHT = config.get('GRID_HEIGHT')
+IMAGE_SIZE = config.get('IMAGE_SIZE')
+USE_UNIQUE_NAME = config.get('USE_UNIQUE_NAME')
+BASE_NAME = config.get('BASE_NAME')
+FILE_ETX = config.get('FILE_ETX')
+SAVE_DIR = os.path.join(os.curdir, config.get('SAVE_DIR'))
+OUTPUT_DIR = os.path.join(os.curdir, config.get('OUTPUT_DIR'))
+MAX_SIZE_MB = config.get('MAX_SIZE_MB')
 
 
 ### =============================================
