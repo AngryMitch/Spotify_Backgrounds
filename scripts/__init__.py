@@ -20,7 +20,7 @@ def load_config(file_path):
     return config
 
 # Load the configuration
-config = load_config('..\config.json')
+config = load_config('config.json')
 
 # Constants from configuration
 GRID_WIDTH = config.get('GRID_WIDTH')

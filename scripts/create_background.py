@@ -14,13 +14,26 @@ def create_image_grid(images, grid_size, image_size):
 
     return grid_image
 
-def resize_images(output_dir, file_size):
+def resize_images(output_dir, max_size):
     for filename in os.listdir(output_dir):
         if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
             img_path = os.path.join(output_dir, filename)
             with Image.open(img_path) as img:
-                # Resize image to the specified size
-                resized_image = img.resize((file_size, file_size), Image.LANCZOS)
+                # Get original dimensions
+                original_width, original_height = img.size
+                
+                # Calculate the new dimensions while preserving aspect ratio
+                if original_width > original_height:
+                    new_width = max_size
+                    new_height = int((max_size / original_width) * original_height)
+                else:
+                    new_height = max_size
+                    new_width = int((max_size / original_height) * original_width)
+                
+                # Resize image
+                resized_image = img.resize((new_width, new_height), Image.LANCZOS)
+                
+                # Save the resized image
                 resized_image.save(img_path)
 
 def generate_grid(grid_width=5, grid_height=None, image_size=200, output_filename='album_art_grid.jpg', input_dir='album_art', output_dir='background_images'):

@@ -1,6 +1,6 @@
 {
-    "GRID_WIDTH": null,
-    "GRID_HEIGHT": 3,
+    "GRID_WIDTH": 3,
+    "GRID_HEIGHT": 7,
     "IMAGE_SIZE": 1000,
     "USE_UNIQUE_NAME": false,
     "BASE_NAME": "album_art_grid",
