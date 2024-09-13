@@ -35,6 +35,16 @@ If run regularly, this can be set up to be dynamic!
    ```
    pillow
    ```
+   Install the required Python packages using premade installation files:
+
+   **Windows**
+   ```bash
+   ./windows.bat
+   ```
+   **Linux**
+   ```
+   ./linux.sh
+   ```
 
 ## Usage
 
