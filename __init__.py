@@ -13,7 +13,7 @@ GRID_HEIGHT = 6                 # Is /image, Set to 200 for maximum grid size. O
 IMAGE_SIZE = 1000               # Sets image pixel size
 
 # Define the file name and type
-USE_UNIQUE_NAME = True          # Option to enable unique background naming is True or False
+USE_UNIQUE_NAME = False          # Option to enable unique background naming is True or False
 BASE_NAME = "album_art_grid"    # Define the base name and extension
 FILE_ETX = ".jpg"               # Define the extension (note: needs to start with '.' and be a supported image extenstion (e.g. .png, .jpg, etc.))
 
@@ -21,6 +21,15 @@ FILE_ETX = ".jpg"               # Define the extension (note: needs to start wit
 SAVE_DIR = os.path.join(os.curdir, 'album_art')             # Output directory for album art
 OUTPUT_DIR = os.path.join(os.curdir, 'background_images')   # Output directory for background images
 MAX_SIZE_MB = 50 # MB                                       # Maximum folder sizes in MB
+
+# Determine if the directories exist, if not create them
+def ensure_directory_exists(directory):
+    """Check if a directory exists and create it if it does not."""
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+        print(f"Directory created: {directory}")
+    else:
+        print(f"Directory already exists: {directory}")
 
 # Determine the operating system and set the cache directories accordingly
 def get_cache_directories():
@@ -97,6 +106,13 @@ def return_name():
         BACKGROUND_NAME = f"{BASE_NAME}{FILE_ETX}"
 
     return BACKGROUND_NAME
+
+
+
+
+# Ensure the directories exist
+ensure_directory_exists(SAVE_DIR)
+ensure_directory_exists(OUTPUT_DIR)
 
 # Find files from Spotify and save them
 search_and_process_images(CACHE_DIR, SAVE_DIR)
