@@ -108,8 +108,6 @@ def return_name():
     return BACKGROUND_NAME
 
 
-
-
 # Ensure the directories exist
 ensure_directory_exists(SAVE_DIR)
 ensure_directory_exists(OUTPUT_DIR)
