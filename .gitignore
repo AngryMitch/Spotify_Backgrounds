@@ -11,6 +11,7 @@ build/
 # Ignore virtual environment directory
 env/
 .venv/
+venv/
 
 # Ignore distribution directories for Linux and Windows
 dist_linux/
