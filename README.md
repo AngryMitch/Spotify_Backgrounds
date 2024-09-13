@@ -22,7 +22,7 @@ If run regularly, this can be set up to be dynamic!
    git clone https://github.com/AngryMitch/Spotify_Backgrounds.git
    cd Spotify_Backgrounds
    ```
-   (Or download the zip and unpack)
+   (Or [download](https://github.com/AngryMitch/Spotify_Backgrounds/archive/refs/heads/main.zip) the zip and unpack)
 
 2. **Install Dependencies**
 
@@ -106,7 +106,7 @@ Feel free to submit issues, feature requests, or pull requests. Contributions ar
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/AngryMitch/Spotify_Backgrounds/blob/main/.github/LICENSE.md) file for details.
 
 ## Contact
 
