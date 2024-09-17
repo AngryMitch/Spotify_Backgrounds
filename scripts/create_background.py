@@ -15,6 +15,7 @@ def create_image_grid(images, grid_size, image_size):
     return grid_image
 
 def resize_images(output_dir, max_size):
+    print(f"Editing files in {output_dir} to be {max_size}")
     for filename in os.listdir(output_dir):
         if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
             img_path = os.path.join(output_dir, filename)
@@ -31,6 +32,7 @@ def resize_images(output_dir, max_size):
                     new_width = int((max_size / original_height) * original_width)
                 
                 # Resize image
+                print(f"resizing image to {new_width} x {new_height}")
                 resized_image = img.resize((new_width, new_height), Image.LANCZOS)
                 
                 # Save the resized image
@@ -50,15 +52,8 @@ def generate_grid(grid_width=5, grid_height=None, image_size=200, output_filenam
     elif grid_width == None and grid_height == None:
         print ("Please enter valid value")
         return
-
-    # Ensure Grid not too big
-    max_num = 200
-    if grid_width > max_num or grid_height > max_num:
-        print(f"Grid too large, generating grid of {max_num} x {max_num} (max), increase max @ line 48 create_background.py")
-        grid_width = max_num
-        grid_height = max_num
-
-    print(f"Generating Grid with - Grid: {grid_width}x{grid_height},    Image Size: {image_size}")
+    
+    print(f"Generating Grid with - Grid: {grid_width}x{grid_height} with {grid_width * grid_height} photos, Resolution: {image_size}px")
 
     # Load images
     image_files = [f for f in os.listdir(input_dir) if f.lower().endswith('.jpg')]

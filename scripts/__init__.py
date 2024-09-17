@@ -39,7 +39,6 @@ MAX_SIZE_MB = config.get('MAX_SIZE_MB')
 ### =============================================
 ### === Input Validation ========================
 ### =============================================
-
 # List of variables to check
 variables = {
     "GRID_WIDTH": GRID_WIDTH,
@@ -163,6 +162,7 @@ def generate_unique_background_name(base_name, extension):
     
     return new_name
 
+# Fucntion to return indexed name
 def return_name():
     """
     Checks if creating unique id or not and sets BACKGROUND_NAME variable accordingly

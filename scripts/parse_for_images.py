@@ -52,7 +52,7 @@ def process_image(image_path, output_path):
             else:
                 print(f"Skipped (not large enough): {image_path}")
     except Exception as e:
-        print(f"Error processing {image_path}: {e}")
+        print(f"Error processing {image_path}: {e}. Not an Image File")
 
 def search_and_process_images(cache_dirs, output_dir):
     # Create the output directory if it doesn't exist
