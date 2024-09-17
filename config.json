@@ -8,6 +8,6 @@
     "SAVE_DIR": "album_art",
     "OUTPUT_DIR": "background_images",
     "CACHE_DIR": ["/home/user/.cache/spotify/Storage", "/home/mitch/.cache/spotify/Data"],
-    "USE_DEFAULT_CACHE": false,
+    "USE_DEFAULT_CACHE": true,
     "MAX_SIZE_MB": 50
 }
