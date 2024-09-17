@@ -62,6 +62,7 @@ If run regularly, this can be set up to be dynamic!
    The script will process the album art from the Spotify cache and generate a grid background image.
 
 3. **Customize Grid Settings**
+   NOTE: May raise errors but set config option to null if empty (e.g. { ... `GRID_WIDTH`: 0, `GRID_HEIGHT`: 5 ... }
 
    Open the `config.json` file to adjust grid settings such as:
 
@@ -73,25 +74,29 @@ If run regularly, this can be set up to be dynamic!
    - `FILE_ETX`: What file extension you want it saved as.
    - `SAVE_DIR`: The name of where the album art is saved.
    - `OUTPUT_DIR`: The name of Background Directory
+   - `CACHE_DIR`: Specific Directorys, basically becomes an folder image crawler
+   - `USE_DEFAULT_CACHE`: True or False, it can find the default directory for Spotify on Linux and Windows OS's
    - `MAX_SIZE_MB`: Limits the size of each generated directory to avoid bloat
 
    Example `config.json`:
 
    ```json
-    {
-        "GRID_WIDTH": 3,
-        "GRID_HEIGHT": null,
-        "IMAGE_SIZE": 1000,
-        "USE_UNIQUE_NAME": false,
-        "BASE_NAME": "album_art_grid",
-        "FILE_ETX": ".jpg",
-        "SAVE_DIR": "album_art",
-        "OUTPUT_DIR": "background_images",
-        "MAX_SIZE_MB": 50
-    }
+   {
+       "GRID_WIDTH": 3,
+       "GRID_HEIGHT": null,
+       "IMAGE_SIZE": 1000,
+       "USE_UNIQUE_NAME": false,
+       "BASE_NAME": "album_art_grid",
+       "FILE_ETX": ".jpg",
+       "SAVE_DIR": "album_art",
+       "OUTPUT_DIR": "background_images",
+       "CACHE_DIR": ["/home/user/.cache/spotify/Storage", "/home/mitch/.cache/spotify/Data"],
+       "USE_DEFAULT_CACHE": true,
+       "MAX_SIZE_MB": 50
+   }
    ```
 
-4. **Set as Desktop Background**
+5. **Set as Desktop Background**
 
    After the script completes, you will find the generated background image in the `OUTPUT_DIR` directory within the project. Set it as your desktop wallpaper through your system settings.
 
