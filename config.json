@@ -1,13 +1,15 @@
 {
-    "GRID_WIDTH": 3,
-    "GRID_HEIGHT": 3,
-    "IMAGE_SIZE": 2000,
-    "USE_UNIQUE_NAME": true,
+    "GRID_WIDTH": 4,
+    "GRID_HEIGHT": 4,
+    "FINAL_IMAGE_SIZE_PX": 1200,
+    "ALBUM_IMAGE_SIZE_PX": 600,
+    "USE_UNIQUE_NAME": false,
     "BASE_NAME": "background_art",
     "FILE_ETX": ".jpg",
     "SAVE_DIR": "album_art",
     "OUTPUT_DIR": "background_images",
     "CACHE_DIR": [""],
     "USE_DEFAULT_CACHE": true,
-    "MAX_SIZE_MB": 50
+    "MAX_IMAGE_COUNT_ALBUM": 24,
+    "MAX_IMAGE_COUNT_BACKGROUND": 3
 }
