@@ -16,7 +16,7 @@ If run regularly, this can be set up to be dynamic!
 
 ## Installation
 
-1. **Clone the Repository**
+1. *****Clone the Repository**
 
    ```bash
    git clone https://github.com/AngryMitch/Spotify_Backgrounds.git
@@ -34,32 +34,24 @@ If run regularly, this can be set up to be dynamic!
 
    The `requirements.txt` file should include:
    ```
-   pillow
+   10.4.0 pillow
    ```
-   Install the required Python packages using premade installation files:
-
-   **Windows**
-   ```bash
-   ./windows.bat
-   ```
-   **Linux**
-   ```
-   ./linux.sh
-   ```
+**OR you can run the executables**
 
 ## Usage
-
 1. **Configure Spotify Cache Path**
 
-   By default, the program looks for Spotify’s cache in the default location. If your cache is in a different directory, specify the path in the configuration file or via command-line arguments.
+   By default, the program looks for Spotify’s cache in the default location. If your cache is in a different directory, or you want to scrape for images elswhere specify the path in the configuration file or via command-line arguments.
 
 2. **Run the Program**
 
    ```bash
-   python3 scripts/__init__.py
+   python3 main.py
    ```
 
-   The script will process the album art from the Spotify cache and generate a grid background image.
+   **OR you can run the executables**
+
+   The script will process the album art from the Spotify cache and generate a grid with those images.
 
 3. **Customize Grid Settings**
    NOTE: May raise errors but set config option to null if empty (e.g. { ... `GRID_WIDTH`: 0, `GRID_HEIGHT`: 5 ... }
@@ -68,31 +60,34 @@ If run regularly, this can be set up to be dynamic!
 
    - `GRID_WIDTH`: The set size of width of the grid (Note: leave null for square image using GRID_HEIGHT)
    - `GRID_HEIGHT`: The set size of height of the grid (Note: leave null for square image using GRID_WIDTH)
-   - `IMAGE_SIZE`: Resolution of the generated background.
-   - `USE_UNIQUE_NAME`: True or False, this will generate an index for the file name allowing for slideshow backgrounds.
+   - `FINAL_IMAGE_SIZE_PX`: Resolution (px) of the generated background.
+   -`ALBUM_IMAGE_SIZE_PX`: The resolution (px) of the album art it builds the background with.
+   - `USE_UNIQUE_NAME`: true or false, this will generate an index for the file name allowing for slideshow backgrounds.
    - `BASE_NAME`: What the name of the file you would like saved is.
    - `FILE_ETX`: What file extension you want it saved as.
    - `SAVE_DIR`: The name of where the album art is saved.
    - `OUTPUT_DIR`: The name of Background Directory
    - `CACHE_DIR`: Specific Directorys, basically becomes an folder image crawler
    - `USE_DEFAULT_CACHE`: True or False, it can find the default directory for Spotify on Linux and Windows OS's
-   - `MAX_SIZE_MB`: Limits the size of each generated directory to avoid bloat
-
+   - `MAX_IMAGE_COUNT_ALBUM`: Limits the size of the SAVE_DIR
+   - `MAX_IMAGE_COUNT_ALBUM`: Limits the size of the OUTPUT_DIR
+   
    Example `config.json`:
-
    ```json
    {
-       "GRID_WIDTH": 3,
-       "GRID_HEIGHT": null,
-       "IMAGE_SIZE": 1000,
-       "USE_UNIQUE_NAME": false,
-       "BASE_NAME": "album_art_grid",
-       "FILE_ETX": ".jpg",
-       "SAVE_DIR": "album_art",
-       "OUTPUT_DIR": "background_images",
-       "CACHE_DIR": ["/home/user/.cache/spotify/Storage", "/home/mitch/.cache/spotify/Data"],
-       "USE_DEFAULT_CACHE": true,
-       "MAX_SIZE_MB": 50
+      "GRID_WIDTH": 4,
+      "GRID_HEIGHT": 4,
+      "FINAL_IMAGE_SIZE_PX": 1200,
+      "ALBUM_IMAGE_SIZE_PX": 600,
+      "USE_UNIQUE_NAME": false,
+      "BASE_NAME": "background_art",
+      "FILE_ETX": ".jpg",
+      "SAVE_DIR": "album_art",
+      "OUTPUT_DIR": "background_images",
+      "CACHE_DIR": [""],
+      "USE_DEFAULT_CACHE": true,
+      "MAX_IMAGE_COUNT_ALBUM": 24,
+      "MAX_IMAGE_COUNT_BACKGROUND": 3
    }
    ```
 
@@ -103,7 +98,6 @@ If run regularly, this can be set up to be dynamic!
 ## Troubleshooting
 
 - **No Album Art Found**: Ensure Spotify is running and that you have album art cached locally. Check your Spotify cache directory and permissions.
-- **Image Processing Errors**: Verify that the required Python packages are installed and up to date.
 
 ## Contributing
 
